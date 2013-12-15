@@ -9,7 +9,7 @@ public:
 	void Add(int, int);
 	void Add(double, double);	
 	int x;	
-	int integers[10];	
+	int integers[100];	
 private:
 
 protected:

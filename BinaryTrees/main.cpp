@@ -32,6 +32,14 @@ void printForwards(Node *n){
 
 }
 
+void insertNode(Node *root, Node *n){
+
+if( n
+
+
+
+}
+
 int main(){
 
 	Node root = Node(5);

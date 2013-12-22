@@ -1,7 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "Node.cpp"
-
+#include <cstdlib>
 using namespace std;
 
 void printBackwards(Node *n){
@@ -23,10 +23,10 @@ void printForwards(Node *n){
 		cout<< n->value << endl;
 	}
 	else{
-	
-	printForwards( n->left);
-	cout << n-> value << endl;
-	printForwards(n->right);
+
+		printForwards( n->left);
+		cout << n-> value << endl;
+		printForwards(n->right);
 
 	}
 
@@ -34,34 +34,48 @@ void printForwards(Node *n){
 
 void insertNode(Node *root, Node *n){
 
-if( n
+	if(n->value < root->value)
+	{
+		if(root->left == NULL){
+			root->left = n;
+		}
+		else insertNode(root->left, n);
+	}
 
 
-
+	if(n->value > root->value)
+	{
+		if(root->right == NULL){
+			root->right = n;
+		}
+	else insertNode(root->right, n);
+	}
 }
 
 int main(){
 
-	Node root = Node(5);
+	Node *root = new Node(5);
 
-	Node n1 = Node(3);
-	Node n2 = Node(10);
 
-	Node n3 = Node(2);
-	Node n4 = Node(4);
-	Node n5 = Node(7);
-	Node n6 = Node(12);
+	Node *n1 = new Node(3);
+	Node *n2 = new Node(10);
+	
+	for(int i = 0; i<5; i++){
+	insertNode(root,new Node(i));
+	}
 
-	root.left = &n1;
-	root.right = &n2;
 
-	n1.left = &n3;
-	n1.right = &n4;
-	n2.left = &n5;
-	n2.right = &n6;
 
-	cout << "First printing in value reverse-order\n" << endl;
-	printBackwards(&root);
-	cout << "Now printing in order\n" << endl;
-	printForwards(&root);
+	/*
+	   cout << "First printing in value reverse-order\n" << endl;
+	   printBackwards(root);
+	   cout << "Now printing in order\n" << endl;
+	   printForwards(root);
+	 */
+
+	//	cout << "Now we insert a node w/ value 15\n" << endl;
+	//	Node n7 = Node(15);
+	//	insertNode(&root, &n7);
+		printForwards(root);
+
 }

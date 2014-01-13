@@ -61,5 +61,5 @@ while 1:
             soup = BeautifulSoup(urllib2.urlopen('http://www.urbandictionary.com/define.php?term=' + newmessage).read())
             div_content = soup.find("div", {"class": "definition"})
             contents = "".join([str(item) for item in div_content.contents])
-            s.send("PRIVMSG " + "#reddit07" + " " + contents[1:len(contents)-1] + "\r\n")
+            s.send("PRIVMSG " + "#reddit07" + " [\x033 UD\x03]: " + contents[1:len(contents)-1] + "\r\n")
 
